@@ -67,9 +67,6 @@ public class Percolation {
             if (index.isValid() && this.open[index.rowIndex][index.columnIndex]) {
                 int first = this.grid[rowIndex][colIndex];
                 int second = this.grid[index.rowIndex][index.columnIndex];
-
-                System.out.println(String.format("union first: %d, second %d", first, second));
-
                 this.uf.union(this.grid[rowIndex][colIndex],
                               this.grid[index.rowIndex][index.columnIndex]);
             }
@@ -104,6 +101,13 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
+        for (int i = 1; i <= n; i++) {
+            int row = n;
+            int col = i;
+            if (this.isOpen(row, col) && isFull(row, col)) {
+                return true;
+            }
+        }
         return false;
     }
 
