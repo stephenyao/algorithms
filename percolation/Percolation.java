@@ -97,8 +97,6 @@ public class Percolation {
 
     // test client (optional)
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        // Percolation p = new Percolation(5);
         Percolation percolation = new Percolation(10);
         percolation.open(1, 1);
         percolation.open(2, 1);
