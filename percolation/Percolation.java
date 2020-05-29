@@ -34,9 +34,10 @@ public class Percolation {
         this.n = n;
 
         for (int i = 1; i <= n * n; i++) {
+            int value = i - 1;
             int rowIndex = (i - 1) / n;
             int columnIndex = (i - 1) % n;
-            this.grid[rowIndex][columnIndex] = i;
+            this.grid[rowIndex][columnIndex] = value;
             this.open[rowIndex][columnIndex] = false;
         }
 
@@ -87,7 +88,7 @@ public class Percolation {
 
     // returns the number of open sites
     public int numberOfOpenSites() {
-        return 0;
+        return this.numberOfOpenSites;
     }
 
     // does the system percolate?
