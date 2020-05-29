@@ -83,6 +83,17 @@ public class Percolation {
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
+        int rowIndex = row - 1;
+        int colIndex = col - 1;
+        int objectIdentifier = this.grid[rowIndex][colIndex];
+        for (int i = 0; i < n; i++) {
+            if (this.open[0][i]) {
+                int topIdentifier = this.grid[0][i];
+                if (this.uf.connected(objectIdentifier, topIdentifier)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
