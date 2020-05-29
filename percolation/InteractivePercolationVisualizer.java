@@ -1,7 +1,7 @@
-package helper; /******************************************************************************
- *  Compilation:  javac helper.InteractivePercolationVisualizer.java
- *  Execution:    java helper.InteractivePercolationVisualizer n
- *  Dependencies: helper.PercolationVisualizer.java Percolation.java
+/******************************************************************************
+ *  Compilation:  javac InteractivePercolationVisualizer.java
+ *  Execution:    java InteractivePercolationVisualizer n
+ *  Dependencies: PercolationVisualizer.java Percolation.java
  *                StdDraw.java StdOut.java
  *
  *  This program takes the grid size n as a command-line argument.

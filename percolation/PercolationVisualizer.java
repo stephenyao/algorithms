@@ -1,6 +1,6 @@
-package helper; /******************************************************************************
- *  Compilation:  javac helper.PercolationVisualizer.java
- *  Execution:    java helper.PercolationVisualizer input.txt
+/******************************************************************************
+ *  Compilation:  javac PercolationVisualizer.java
+ *  Execution:    java PercolationVisualizer input.txt
  *  Dependencies: Percolation.java
  *
  *  This program takes the name of a file as a command-line argument.

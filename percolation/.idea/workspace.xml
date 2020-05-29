@@ -32,10 +32,10 @@
     <property name="ToolWindowMessages.ShowToolbar" value="false" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -56,7 +56,7 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="InteractivePercolationVisualizer" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="helper.InteractivePercolationVisualizer" />
+      <option name="MAIN_CLASS_NAME" value="InteractivePercolationVisualizer" />
       <module name="Algorithms, Part I" />
       <method v="2" />
     </configuration>
@@ -66,8 +66,14 @@
       <method v="2" />
     </configuration>
     <configuration name="PercolationVisualizer" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="helper.PercolationVisualizer" />
+      <option name="MAIN_CLASS_NAME" value="PercolationVisualizer" />
       <module name="Algorithms, Part I" />
+      <method v="2" />
+    </configuration>
+    <configuration name="QuickUFDriver" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="QuickUFDriver" />
+      <module name="Algorithms, Part I" />
+      <option name="PROGRAM_PARAMETERS" value="0,1,2,3" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
