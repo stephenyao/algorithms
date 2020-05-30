@@ -7,6 +7,8 @@ public class Percolation {
     private int numberOfOpenSites = 0;
     private WeightedQuickUnionUF uf;
     private int n;
+    private int virtualTopSite;
+    private int virtualBotSite;
 
     private class ArrayIndices {
         int rowIndex;
@@ -30,8 +32,10 @@ public class Percolation {
     public Percolation(int n) {
         this.grid = new int[n][n];
         this.open = new boolean[n][n];
-        this.uf = new WeightedQuickUnionUF(n * n);
+        this.uf = new WeightedQuickUnionUF(n * n + 2);
         this.n = n;
+        this.virtualTopSite = n * n;
+        this.virtualBotSite = n * n + 1;
 
         for (int i = 0; i < n * n; i++) {
             int value = i;
@@ -40,12 +44,6 @@ public class Percolation {
             this.grid[rowIndex][columnIndex] = value;
             this.open[rowIndex][columnIndex] = false;
         }
-
-        for (int[] a : this.grid) {
-            for (int number : a) {
-                System.out.println(number);
-            }
-        }
     }
 
     // opens the site (row, col) if it is not open already
@@ -53,8 +51,15 @@ public class Percolation {
         int rowIndex = row - 1;
         int colIndex = col - 1;
         this.open[rowIndex][colIndex] = true;
-        this.open[rowIndex][colIndex] = true;
         this.numberOfOpenSites++;
+
+        if (rowIndex == 0) {
+            this.uf.union(this.grid[rowIndex][colIndex], virtualTopSite);
+        }
+
+        if (rowIndex == n - 1) {
+            this.uf.union(this.grid[rowIndex][colIndex], virtualBotSite);
+        }
 
         ArrayIndices[] indices = new ArrayIndices[] {
                 new ArrayIndices(rowIndex - 1, colIndex, this.n),
@@ -83,15 +88,7 @@ public class Percolation {
         int rowIndex = row - 1;
         int colIndex = col - 1;
         int objectIdentifier = this.grid[rowIndex][colIndex];
-        for (int i = 0; i < n; i++) {
-            if (this.open[0][i]) {
-                int topIdentifier = this.grid[0][i];
-                if (this.uf.connected(objectIdentifier, topIdentifier)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return this.uf.connected(objectIdentifier, virtualTopSite);
     }
 
     // returns the number of open sites
@@ -101,14 +98,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        for (int i = 1; i <= n; i++) {
-            int row = n;
-            int col = i;
-            if (this.isOpen(row, col) && isFull(row, col)) {
-                return true;
-            }
-        }
-        return false;
+        return this.uf.connected(virtualTopSite, virtualBotSite);
     }
 
     // test client (optional)
