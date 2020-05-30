@@ -50,6 +50,11 @@ public class Percolation {
     public void open(int row, int col) {
         int rowIndex = row - 1;
         int colIndex = col - 1;
+
+        if (this.open[rowIndex][colIndex]) {
+            return;
+        }
+
         this.open[rowIndex][colIndex] = true;
         this.numberOfOpenSites++;
 
