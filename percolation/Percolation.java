@@ -4,11 +4,12 @@ public class Percolation {
     // creates n-by-n grid, with all sites initially blocked
     private int[][] grid;
     private boolean[][] open;
+    private boolean[][] connectedToTop;
+    private boolean[][] connectedToBottom;
     private int numberOfOpenSites = 0;
     private WeightedQuickUnionUF uf;
     private int n;
-    private int virtualTopSite;
-    private int virtualBotSite;
+    private boolean percolates = false;
 
     private class ArrayIndices {
         int rowIndex;
@@ -32,10 +33,10 @@ public class Percolation {
     public Percolation(int n) {
         this.grid = new int[n][n];
         this.open = new boolean[n][n];
-        this.uf = new WeightedQuickUnionUF(n * n + 2);
+        this.uf = new WeightedQuickUnionUF(n * n);
+        this.connectedToTop = new boolean[n][n];
+        this.connectedToBottom = new boolean[n][n];
         this.n = n;
-        this.virtualTopSite = n * n;
-        this.virtualBotSite = n * n + 1;
 
         for (int i = 0; i < n * n; i++) {
             int value = i;
@@ -50,6 +51,9 @@ public class Percolation {
     public void open(int row, int col) {
         int rowIndex = row - 1;
         int colIndex = col - 1;
+        boolean connectedToTop = false;
+        boolean connectedToBottom = false;
+        int objectIdentifier = this.grid[rowIndex][colIndex];
 
         if (this.open[rowIndex][colIndex]) {
             return;
@@ -58,13 +62,14 @@ public class Percolation {
         this.open[rowIndex][colIndex] = true;
         this.numberOfOpenSites++;
 
-        if (rowIndex == 0) {
-            this.uf.union(this.grid[rowIndex][colIndex], virtualTopSite);
-        }
-
-        if (rowIndex == n - 1) {
-            this.uf.union(this.grid[rowIndex][colIndex], virtualBotSite);
-        }
+        // ArrayIndices left = new ArrayIndices(rowIndex - 1, colIndex, this.n);
+        // ArrayIndices top = new ArrayIndices(rowIndex, colIndex - 1, this.n);
+        // ArrayIndices right = new ArrayIndices(rowIndex + 1, colIndex, this.n);
+        // ArrayIndices bottom = new ArrayIndices(rowIndex, colIndex + 1, this.n);
+        //
+        // if (left.isValid()) {
+        //
+        // }
 
         ArrayIndices[] indices = new ArrayIndices[] {
                 new ArrayIndices(rowIndex - 1, colIndex, this.n),
@@ -75,25 +80,67 @@ public class Percolation {
 
         for (ArrayIndices index : indices) {
             if (index.isValid() && this.open[index.rowIndex][index.columnIndex]) {
-                int first = this.grid[rowIndex][colIndex];
-                int second = this.grid[index.rowIndex][index.columnIndex];
-                this.uf.union(this.grid[rowIndex][colIndex],
-                              this.grid[index.rowIndex][index.columnIndex]);
+                int opened = this.grid[rowIndex][colIndex];
+                int adjacent = this.grid[index.rowIndex][index.columnIndex];
+                int rootOfAdjacent = this.uf.find(adjacent);
+                int adjacentRootRowIndex = rootOfAdjacent / n;
+                int adjacentRootColumnIndex = rootOfAdjacent % n;
+                this.uf.union(opened, adjacent);
+                if (this.connectedToTop[adjacentRootRowIndex][adjacentRootColumnIndex]) {
+                    connectedToTop = true;
+                }
+
+                if (this.connectedToBottom[adjacentRootRowIndex][adjacentRootColumnIndex]) {
+                    connectedToBottom = true;
+                }
+
             }
         }
+
+        if (row == 1) {
+            connectedToTop = true;
+        }
+
+        if (row == this.n) {
+            connectedToBottom = true;
+        }
+
+        int root = uf.find(objectIdentifier);
+        int rootRowIndex = root / n;
+        int rootColumnIndex = root % n;
+
+        if (connectedToTop) {
+            // this.connectedToTop[rowIndex][colIndex] = true;
+            this.connectedToTop[rootRowIndex][rootColumnIndex] = true;
+        }
+
+        if (connectedToBottom) {
+            // this.connectedToBottom[rowIndex][colIndex] = true;
+            this.connectedToBottom[rootRowIndex][rootColumnIndex] = true;
+        }
+
+        if (connectedToTop && connectedToBottom) {
+            this.percolates = true;
+        }
+
     }
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-        return this.open[row - 1][col - 1];
+        int rowIndex = row - 1;
+        int colIndex = col - 1;
+        return this.open[rowIndex][colIndex];
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
         int rowIndex = row - 1;
         int colIndex = col - 1;
-        int objectIdentifier = this.grid[rowIndex][colIndex];
-        return this.uf.connected(objectIdentifier, virtualTopSite);
+        int objectIdentifier = grid[rowIndex][colIndex];
+        int root = uf.find(objectIdentifier);
+        int rootRowIndex = root / n;
+        int rootColumnIndex = root % n;
+        return this.connectedToTop[rootRowIndex][rootColumnIndex];
     }
 
     // returns the number of open sites
@@ -103,7 +150,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return this.uf.connected(virtualTopSite, virtualBotSite);
+        return this.percolates;
     }
 
     // test client (optional)
