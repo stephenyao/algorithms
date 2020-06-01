@@ -31,6 +31,9 @@ public class Percolation {
     }
 
     public Percolation(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n must be greater than 0");
+        }
         this.grid = new int[n][n];
         this.open = new boolean[n][n];
         this.uf = new WeightedQuickUnionUF(n * n);
@@ -49,6 +52,7 @@ public class Percolation {
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
+        validate(row, col);
         int rowIndex = row - 1;
         int colIndex = col - 1;
         boolean connectedToTop = false;
@@ -61,15 +65,6 @@ public class Percolation {
 
         this.open[rowIndex][colIndex] = true;
         this.numberOfOpenSites++;
-
-        // ArrayIndices left = new ArrayIndices(rowIndex - 1, colIndex, this.n);
-        // ArrayIndices top = new ArrayIndices(rowIndex, colIndex - 1, this.n);
-        // ArrayIndices right = new ArrayIndices(rowIndex + 1, colIndex, this.n);
-        // ArrayIndices bottom = new ArrayIndices(rowIndex, colIndex + 1, this.n);
-        //
-        // if (left.isValid()) {
-        //
-        // }
 
         ArrayIndices[] indices = new ArrayIndices[] {
                 new ArrayIndices(rowIndex - 1, colIndex, this.n),
@@ -127,6 +122,7 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
+        validate(row, col);
         int rowIndex = row - 1;
         int colIndex = col - 1;
         return this.open[rowIndex][colIndex];
@@ -134,6 +130,7 @@ public class Percolation {
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
+        validate(row, col);
         int rowIndex = row - 1;
         int colIndex = col - 1;
         int objectIdentifier = grid[rowIndex][colIndex];
@@ -151,6 +148,12 @@ public class Percolation {
     // does the system percolate?
     public boolean percolates() {
         return this.percolates;
+    }
+
+    private void validate(int row, int col) {
+        if (row < 1 || row > n || col < 1 || col > n) {
+            throw new IllegalArgumentException("row or col is outside of bounds");
+        }
     }
 
     // test client (optional)
