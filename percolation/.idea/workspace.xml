@@ -56,7 +56,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RandomizedQueue">
+  <component name="RunManager" selected="Application.Permutation">
     <configuration name="Deque" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Deque" />
       <module name="Algorithms, Part I" />
@@ -78,6 +78,14 @@
       <option name="PROGRAM_PARAMETERS" value="helper/input2.txt" />
       <method v="2" />
     </configuration>
+    <configuration name="Permutation" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Permutation" />
+      <module name="Algorithms, Part I" />
+      <option name="PROGRAM_PARAMETERS" value="3" />
+      <option name="REDIRECT_INPUT" value="true" />
+      <option name="INPUT_FILE" value="queues/distinct.txt" />
+      <method v="2" />
+    </configuration>
     <configuration name="QuickUFDriver" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="QuickUFDriver" />
       <module name="Algorithms, Part I" />
@@ -92,6 +100,15 @@
     <configuration default="true" type="Application" factoryName="Application">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.InteractivePercolationVisualizer" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.PercolationVisualizer" />
+      <item itemvalue="Application.Permutation" />
+      <item itemvalue="Application.QuickUFDriver" />
+      <item itemvalue="Application.Deque" />
+      <item itemvalue="Application.RandomizedQueue" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.RandomizedQueue" />
@@ -115,16 +132,6 @@
           <url>file://$PROJECT_DIR$/perc/Percolation.java</url>
           <line>89</line>
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/queues/RandomizedQueue.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/queues/RandomizedQueue.java</url>
-          <line>92</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
