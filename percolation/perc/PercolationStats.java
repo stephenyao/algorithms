@@ -1,4 +1,4 @@
-/* *****************************************************************************
+package perc;/* *****************************************************************************
  *  Name:
  *  Date:
  *  Description:
@@ -24,7 +24,7 @@ public class PercolationStats {
         for (int i = 0; i < trials; i++) {
             // StdDraw.enableDoubleBuffering();
             Percolation p = new Percolation(n);
-            // PercolationVisualizer.draw(p, n);
+            // perc.PercolationVisualizer.draw(p, n);
             // StdDraw.show();
 
             while (!p.percolates()) {
@@ -32,7 +32,7 @@ public class PercolationStats {
                 int randomCol = StdRandom.uniform(1, n + 1);
                 p.open(randomRow, randomCol);
                 // draw n-by-n percolation system
-                // PercolationVisualizer.draw(p, n);
+                // perc.PercolationVisualizer.draw(p, n);
                 // StdDraw.show();
             }
 
@@ -75,7 +75,8 @@ public class PercolationStats {
 
     public static void main(String[] args) {
         if (args.length != 2) {
-            throw new IllegalArgumentException("Percolation stats must have 2 inputs, n and T");
+            throw new IllegalArgumentException(
+                    "perc.Percolation stats must have 2 inputs, n and T");
         }
         int n = Integer.parseInt(args[0]);
         int T = Integer.parseInt(args[1]);

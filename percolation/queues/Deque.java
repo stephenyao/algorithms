@@ -37,7 +37,8 @@ public class Deque<Item> implements Iterable<Item> {
         if (size == 0) {
             first = newNode;
             last = first;
-        } else {
+        }
+        else {
             newNode.next = first;
             first.previous = newNode;
             first = newNode;
@@ -55,7 +56,8 @@ public class Deque<Item> implements Iterable<Item> {
         if (size == 0) {
             last = newNode;
             first = last;
-        } else {
+        }
+        else {
             newNode.previous = last;
             last.next = newNode;
             last = newNode;
@@ -122,7 +124,9 @@ public class Deque<Item> implements Iterable<Item> {
         int removeSecond = addFirstDeque.removeFirst();
         int removeThird = addFirstDeque.removeFirst();
 
-        System.out.println(String.format("addFirstDeque: deque: %d, deque: %d, deque: %d", removeFirst, removeSecond, removeThird));
+        System.out.println(
+                String.format("addFirstDeque: deque: %d, deque: %d, deque: %d", removeFirst,
+                              removeSecond, removeThird));
 
         Deque<Integer> addLastDeque = new Deque<>();
         addLastDeque.addLast(1);
@@ -133,7 +137,9 @@ public class Deque<Item> implements Iterable<Item> {
             System.out.println(String.format("addLastQueue: %d", i));
         }
 
-        System.out.println(String.format("addLastDeque: deque: %d, deque: %d, deque: %d", addLastDeque.removeLast(), addLastDeque.removeLast(), addLastDeque.removeLast()));
+        System.out.println(String.format("addLastDeque: deque: %d, deque: %d, deque: %d",
+                                         addLastDeque.removeLast(), addLastDeque.removeLast(),
+                                         addLastDeque.removeLast()));
 
         System.out.println("===== Testing deque first last ======");
         Deque<Integer> firstLastQueue = new Deque<>();

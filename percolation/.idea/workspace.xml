@@ -40,6 +40,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/queues" />
       <recent name="$PROJECT_DIR$/helper" />
     </key>
   </component>
@@ -55,19 +56,24 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.InteractivePercolationVisualizer">
+  <component name="RunManager" selected="Application.RandomizedQueue">
+    <configuration name="Deque" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Deque" />
+      <module name="Algorithms, Part I" />
+      <method v="2" />
+    </configuration>
     <configuration name="InteractivePercolationVisualizer" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="InteractivePercolationVisualizer" />
+      <option name="MAIN_CLASS_NAME" value="perc.InteractivePercolationVisualizer" />
       <module name="Algorithms, Part I" />
       <method v="2" />
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Percolation" />
+      <option name="MAIN_CLASS_NAME" value="perc.Percolation" />
       <module name="Algorithms, Part I" />
       <method v="2" />
     </configuration>
     <configuration name="PercolationVisualizer" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="PercolationVisualizer" />
+      <option name="MAIN_CLASS_NAME" value="perc.PercolationVisualizer" />
       <module name="Algorithms, Part I" />
       <option name="PROGRAM_PARAMETERS" value="helper/input2.txt" />
       <method v="2" />
@@ -78,9 +84,20 @@
       <option name="PROGRAM_PARAMETERS" value="0,1,2,3" />
       <method v="2" />
     </configuration>
+    <configuration name="RandomizedQueue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RandomizedQueue" />
+      <module name="Algorithms, Part I" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.RandomizedQueue" />
+        <item itemvalue="Application.Deque" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -95,9 +112,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Percolation.java</url>
+          <url>file://$PROJECT_DIR$/perc/Percolation.java</url>
           <line>89</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/queues/RandomizedQueue.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/queues/RandomizedQueue.java</url>
+          <line>92</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
