@@ -26,6 +26,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // add the item
     public void enqueue(Item item) {
+        if (item == null) throw new IllegalArgumentException("cannot enque null item");
         if (size() == items.length) {
             resize(2 * items.length);
         }
@@ -62,6 +63,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // return a random item (but do not remove it)
     public Item sample() {
+        if (n == 0) throw new NoSuchElementException("cannot sample empty queue");
         int position = StdRandom.uniform(n);
         return items[position];
     }
@@ -114,7 +116,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
     }
 
-    public static RandomizedQueue<Integer> testQueue() {
+    private static RandomizedQueue<Integer> testQueue() {
         RandomizedQueue<Integer> queue = new RandomizedQueue<Integer>();
         queue.enqueue(1);
         queue.enqueue(2);

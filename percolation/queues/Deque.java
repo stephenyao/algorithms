@@ -3,8 +3,8 @@ import java.util.NoSuchElementException;
 
 public class Deque<Item> implements Iterable<Item> {
 
-    Node first, last;
-    int size = 0;
+    private Node first, last;
+    private int size = 0;
 
     private class Node {
         Item item;
@@ -72,6 +72,7 @@ public class Deque<Item> implements Iterable<Item> {
         first = first.next;
         if (first != null) first.previous = null;
         size--;
+        if (size == 0) last = null;
         return item;
     }
 
@@ -82,6 +83,7 @@ public class Deque<Item> implements Iterable<Item> {
         last = last.previous;
         if (last != null) last.next = null;
         size--;
+        if (size == 0) first = null;
         return item;
     }
 
@@ -112,57 +114,56 @@ public class Deque<Item> implements Iterable<Item> {
     // unit testing (required)
     public static void main(String[] args) {
         Deque<Integer> addFirstDeque = new Deque<>();
-        addFirstDeque.addFirst(1);
-        addFirstDeque.addFirst(2);
-        addFirstDeque.addFirst(3);
+        addFirstDeque.addFirst(4);
+        addFirstDeque.removeFirst();
 
         for (Integer i : addFirstDeque) {
             System.out.println(String.format("addFirstQueue: %d", i));
         }
-
-        int removeFirst = addFirstDeque.removeFirst();
-        int removeSecond = addFirstDeque.removeFirst();
-        int removeThird = addFirstDeque.removeFirst();
-
-        System.out.println(
-                String.format("addFirstDeque: deque: %d, deque: %d, deque: %d", removeFirst,
-                              removeSecond, removeThird));
-
-        Deque<Integer> addLastDeque = new Deque<>();
-        addLastDeque.addLast(1);
-        addLastDeque.addLast(2);
-        addLastDeque.addLast(3);
-
-        for (Integer i : addLastDeque) {
-            System.out.println(String.format("addLastQueue: %d", i));
-        }
-
-        System.out.println(String.format("addLastDeque: deque: %d, deque: %d, deque: %d",
-                                         addLastDeque.removeLast(), addLastDeque.removeLast(),
-                                         addLastDeque.removeLast()));
-
-        System.out.println("===== Testing deque first last ======");
-        Deque<Integer> firstLastQueue = new Deque<>();
-        firstLastQueue.addFirst(1);
-        System.out.println("===== Add first 1 ======");
-        firstLastQueue.addFirst(2);
-        System.out.println("===== Add first 2 ======");
-        firstLastQueue.addLast(3);
-        System.out.println("===== Add last 3 ======");
-        int firstLastQueueOne = firstLastQueue.removeFirst();
-        System.out.println(String.format("===== remove first: %d ======", firstLastQueueOne));
-        int firstLastQueueTwo = firstLastQueue.removeLast();
-        System.out.println(String.format("===== remove last: %d ======", firstLastQueueTwo));
-        firstLastQueue.addFirst(4);
-        System.out.println("===== Add first 4 ======");
-        firstLastQueue.addLast(5);
-        System.out.println("===== Add last 5 ======");
-        int firstLastQueueThree = firstLastQueue.removeFirst();
-        System.out.println(String.format("===== remove first: %d ======", firstLastQueueThree));
-        int firstLastQueueFour = firstLastQueue.removeFirst();
-        System.out.println(String.format("===== remove first: %d ======", firstLastQueueFour));
-        int firstLastQueueFive = firstLastQueue.removeLast();
-        System.out.println(String.format("===== remove last: %d ======", firstLastQueueFive));
+        //
+        // int removeFirst = addFirstDeque.removeFirst();
+        // int removeSecond = addFirstDeque.removeFirst();
+        // int removeThird = addFirstDeque.removeFirst();
+        //
+        // System.out.println(
+        //         String.format("addFirstDeque: deque: %d, deque: %d, deque: %d", removeFirst,
+        //                       removeSecond, removeThird));
+        //
+        // Deque<Integer> addLastDeque = new Deque<>();
+        // addLastDeque.addLast(1);
+        // addLastDeque.addLast(2);
+        // addLastDeque.addLast(3);
+        //
+        // for (Integer i : addLastDeque) {
+        //     System.out.println(String.format("addLastQueue: %d", i));
+        // }
+        //
+        // System.out.println(String.format("addLastDeque: deque: %d, deque: %d, deque: %d",
+        //                                  addLastDeque.removeLast(), addLastDeque.removeLast(),
+        //                                  addLastDeque.removeLast()));
+        //
+        // System.out.println("===== Testing deque first last ======");
+        // Deque<Integer> firstLastQueue = new Deque<>();
+        // firstLastQueue.addFirst(1);
+        // System.out.println("===== Add first 1 ======");
+        // firstLastQueue.addFirst(2);
+        // System.out.println("===== Add first 2 ======");
+        // firstLastQueue.addLast(3);
+        // System.out.println("===== Add last 3 ======");
+        // int firstLastQueueOne = firstLastQueue.removeFirst();
+        // System.out.println(String.format("===== remove first: %d ======", firstLastQueueOne));
+        // int firstLastQueueTwo = firstLastQueue.removeLast();
+        // System.out.println(String.format("===== remove last: %d ======", firstLastQueueTwo));
+        // firstLastQueue.addFirst(4);
+        // System.out.println("===== Add first 4 ======");
+        // firstLastQueue.addLast(5);
+        // System.out.println("===== Add last 5 ======");
+        // int firstLastQueueThree = firstLastQueue.removeFirst();
+        // System.out.println(String.format("===== remove first: %d ======", firstLastQueueThree));
+        // int firstLastQueueFour = firstLastQueue.removeFirst();
+        // System.out.println(String.format("===== remove first: %d ======", firstLastQueueFour));
+        // int firstLastQueueFive = firstLastQueue.removeLast();
+        // System.out.println(String.format("===== remove last: %d ======", firstLastQueueFive));
     }
 
 }
