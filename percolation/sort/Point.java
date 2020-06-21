@@ -96,9 +96,24 @@ public class Point implements Comparable<Point> {
      */
     public Comparator<Point> slopeOrder() {
         /* YOUR CODE HERE */
-        return null;
+        return new SlopeComparator(this);
     }
 
+    private static class SlopeComparator implements Comparator<Point> {
+
+        Point reference;
+
+        public SlopeComparator(Point reference) {
+            this.reference = reference;
+        }
+
+        public int compare(Point x, Point y) {
+            double diff = (reference.slopeTo(x) - reference.slopeTo(y));
+            if (diff < 0) return -1;
+            else if (diff > 0) return 1;
+            else return 0;
+        }
+    }
 
     /**
      * Returns a string representation of this point. This method is provide for debugging; your
@@ -117,6 +132,17 @@ public class Point implements Comparable<Point> {
     public static void main(String[] args) {
         pointCompareTest();
         pointSlopeTest();
+        slopeOrderTest();
+    }
+
+    private static void slopeOrderTest() {
+        Point inf1 = new Point(2, 5);
+        Point inf2 = new Point(2, 2);
+        Point inf3 = new Point(2, 10);
+
+        Comparator<Point> c = inf1.slopeOrder();
+        System.out.println(
+                String.format("inf1 slope order: %d should equal 0", c.compare(inf2, inf3)));
     }
 
     private static void pointSlopeTest() {
