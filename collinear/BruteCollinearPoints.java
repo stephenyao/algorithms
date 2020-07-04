@@ -1,8 +1,10 @@
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Insertion;
+import edu.princeton.cs.algs4.MergeX;
 import edu.princeton.cs.algs4.StdDraw;
 import edu.princeton.cs.algs4.StdOut;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /******************************************************************************
@@ -17,23 +19,58 @@ import java.util.Comparator;
 
 public class BruteCollinearPoints {
 
-    Point[] points;
+    private final Point[] points;
+    private int numberOfSegments;
+    private LineSegment[] segments = null;
 
     public BruteCollinearPoints(Point[] points) {
-        this.points = points;
+        this.points = sanitisePoints(points);
+        this.segments();
+    }
+
+    private static Point[] sanitisePoints(Point[] points) {
+        if (points == null) throw new IllegalArgumentException();
+
+        Point[] copy = new Point[points.length];
+        for (int i = 0; i < points.length; i++) {
+            if (points[i] == null) {
+                throw new IllegalArgumentException();
+            }
+            copy[i] = points[i];
+        }
+
+        MergeX.sort(copy);
+
+        Point previous = null;
+        for (Point p : copy) {
+            if (previous == null) {
+                previous = p;
+                continue;
+            }
+
+            if (previous.compareTo(p) == 0) throw new IllegalArgumentException();
+            previous = p;
+        }
+
+        return copy;
     }
 
     public int numberOfSegments() {
-        return 0;
+        return numberOfSegments;
     }  // the number of line segments
 
     public LineSegment[] segments() {
-        LineSegment[] segments = new LineSegment[2];
+        if (this.segments != null) {
+            return this.segments.clone();
+        }
+
+        ArrayList<LineSegment> list = new ArrayList<LineSegment>();
+
         for (int i = 0; i < points.length - 3; i++) {
             for (int j = i + 1; j < points.length - 2; j++) {
                 for (int k = j + 1; k < points.length - 1; k++) {
                     for (int l = k + 1; l < points.length; l++) {
-                        Comparator c = points[i].slopeOrder();
+                        Comparator<Point> c = points[i].slopeOrder();
                         if ((c.compare(points[j], points[k]) == 0) && (
                                 c.compare(points[j], points[l]) == 0)) {
                             Point[] pointsOnSegment = {
@@ -42,14 +79,16 @@ public class BruteCollinearPoints {
                             Insertion.sort(pointsOnSegment);
                             LineSegment segment = new LineSegment(pointsOnSegment[0],
                                                                   pointsOnSegment[3]);
-                            segments[i] = segment;
+                            list.add(segment);
                         }
                     }
                 }
             }
         }
 
-        return segments;
+        this.numberOfSegments = list.size();
+        this.segments = list.toArray(new LineSegment[list.size()]);
+        return this.segments.clone();
     }
 
     public static void main(String[] args) {
@@ -62,6 +101,8 @@ public class BruteCollinearPoints {
             int y = in.readInt();
             points[i] = new Point(x, y);
         }
+
+        sanitisePoints(points);
 
         // draw the points
         StdDraw.enableDoubleBuffering();
