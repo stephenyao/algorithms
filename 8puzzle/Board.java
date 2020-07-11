@@ -4,6 +4,8 @@
  *  Description:
  **************************************************************************** */
 
+import java.util.Arrays;
+
 public class Board {
 
     private int[][] tiles;
@@ -48,7 +50,8 @@ public class Board {
 
     // is this board the goal board?
     public boolean isGoal() {
-        return false;
+        int[][] goal = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
+        return Arrays.deepEquals(goal, this.tiles);
     }
 
     // does this board equal y?
@@ -68,9 +71,11 @@ public class Board {
 
     // unit testing (not graded)
     public static void main(String[] args) {
-        int[][] tiles = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
+        int[][] tiles = { { 1, 2, 3 }, { 5, 4, 6 }, { 7, 8, 0 } };
         Board board = new Board(tiles);
-        System.out.print(board.toString());
+        System.out.println(board.toString());
+        System.out.println(String.format("dimensions: %d x %d", board.dimension(), board.dimension()));
+        System.out.println(String.format("Is goal: %b", board.isGoal()));
     }
 
 }
