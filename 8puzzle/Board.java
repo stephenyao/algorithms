@@ -23,7 +23,9 @@ public class Board {
                 // System.out.print(String.format("%d", tiles[row][column]));
                 builder.append(String.format("%2d", tiles[row][column]));
             }
-            builder.append("\n");
+            if (row != tiles.length - 1) {
+                builder.append("\n");
+            }
         }
 
         return builder.toString();
@@ -66,10 +68,9 @@ public class Board {
 
     // unit testing (not graded)
     public static void main(String[] args) {
-        System.out.println("Board.java");
         int[][] tiles = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
         Board board = new Board(tiles);
-        System.out.println(board.toString());
+        System.out.print(board.toString());
     }
 
 }
