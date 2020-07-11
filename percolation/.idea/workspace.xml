@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +27,14 @@
     <toolWindowToFront>false</toolWindowToFront>
     <toolWindowEditorPreview>false</toolWindowEditorPreview>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1cYtP9yU5HPjFkd1oluQKj1alL5" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ToolWindowMessages.ShowToolbar" value="false" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
@@ -46,18 +52,6 @@
       <recent name="$PROJECT_DIR$/queues" />
       <recent name="$PROJECT_DIR$/helper" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.BruteCollinearPoints">
     <configuration name="BruteCollinearPoints" type="Application" factoryName="Application">
@@ -115,15 +109,15 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.BruteCollinearPoints" />
+      <item itemvalue="Application.Deque" />
       <item itemvalue="Application.InteractivePercolationVisualizer" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.PercolationVisualizer" />
       <item itemvalue="Application.Permutation" />
-      <item itemvalue="Application.QuickUFDriver" />
-      <item itemvalue="Application.BruteCollinearPoints" />
-      <item itemvalue="Application.Deque" />
-      <item itemvalue="Application.RandomizedQueue" />
       <item itemvalue="Application.Point" />
+      <item itemvalue="Application.QuickUFDriver" />
+      <item itemvalue="Application.RandomizedQueue" />
     </list>
     <recent_temporary>
       <list>
@@ -133,6 +127,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1594435849356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594435849356</updated>
+    </task>
+    <servers />
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -141,6 +147,12 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1594435879996">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1594435879996" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
