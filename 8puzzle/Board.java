@@ -89,6 +89,16 @@ public class Board {
         return Arrays.deepEquals(goal, this.tiles);
     }
 
+    // does this board equal y?
+    public boolean equals(Object y) {
+        Board board = (Board) y;
+        if (board == null) {
+            return false;
+        }
+
+        return Arrays.deepEquals(board.tiles, this.tiles);
+    }
+
     // all neighboring boards
     public Iterable<Board> neighbors() {
         ArrayList<Board> list = new ArrayList<Board>();
