@@ -62,8 +62,8 @@ public class Board {
             for (int column = 0; column < tiles.length; column++) {
                 int tile = tiles[row][column];
                 if (tile != 0) {
-                    int goalRow = (tile - 1) / 3;
-                    int goalColumn = (tile - 1) % 3;
+                    int goalRow = (tile - 1) / dimension();
+                    int goalColumn = (tile - 1) % dimension();
                     int rowDist = goalRow - row;
                     int columnDist = goalColumn - column;
                     int manhattanDist = Math.abs(rowDist) + Math.abs(columnDist);
