@@ -39,7 +39,10 @@ public class Solver {
         while (!node.board.isGoal()) {
             for (Board neighbor : node.board.neighbors()) {
                 SearchNode neighborNode = new SearchNode(neighbor, node.moves + 1, node);
-                pq.insert(neighborNode);
+                Board previousBoard = node.previous != null ? node.previous.board : null;
+                if (!neighborNode.board.equals(previousBoard)) {
+                    pq.insert(neighborNode);
+                }
             }
             node = pq.delMin();
         }
