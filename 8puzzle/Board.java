@@ -80,7 +80,12 @@ public class Board {
 
     // does this board equal y?
     public boolean equals(Object y) {
-        return false;
+        Board board = (Board) y;
+        if (board == null) {
+            return false;
+        }
+
+        return Arrays.deepEquals(board.tiles, this.tiles);
     }
 
     // all neighboring boards
@@ -96,6 +101,7 @@ public class Board {
     // unit testing (not graded)
     public static void main(String[] args) {
         int[][] tiles = { { 8, 1, 3 }, { 4, 0, 2 }, { 7, 6, 5 } };
+        int[][] otherTiles = { { 8, 5, 3 }, { 4, 0, 2 }, { 7, 6, 1 } };
         Board board = new Board(tiles);
         System.out.println(board.toString());
         System.out.println(
@@ -103,6 +109,12 @@ public class Board {
         System.out.println(String.format("Is goal: %b", board.isGoal()));
         System.out.println(String.format("Hamming distance: %d", board.hamming()));
         System.out.println(String.format("Manhattan distance: %d", board.manhattan()));
+        System.out.println(
+                String.format("Is equal to same board: %b", board.equals(new Board(tiles))));
+        System.out.println(
+                String.format("Is equal to different board: %b",
+                              board.equals(new Board(otherTiles))));
+        
     }
 
 }
