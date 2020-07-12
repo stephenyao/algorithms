@@ -10,12 +10,22 @@ import java.util.Arrays;
 public class Board {
 
     private int[][] tiles;
-    private final int[][] goal = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
+    private final int[][] goal;
 
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
     public Board(int[][] tiles) {
         this.tiles = deepCopy(tiles);
+        int[][] goal = new int[tiles.length][tiles.length];
+        int count = 1;
+        for (int row = 0; row < tiles.length; row++) {
+            for (int col = 0; col < tiles.length; col++) {
+                goal[row][col] = count;
+                count++;
+            }
+        }
+        goal[tiles.length - 1][tiles.length - 1] = 0;
+        this.goal = goal;
     }
 
     // string representation of this board

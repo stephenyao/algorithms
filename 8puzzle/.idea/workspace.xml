@@ -86,7 +86,13 @@
     <configuration name="PuzzleChecker" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="PuzzleChecker" />
       <module name="Algorithms, Part I" />
-      <option name="PROGRAM_PARAMETERS" value="puzzle01.txt" />
+      <option name="PROGRAM_PARAMETERS" value="puzzle3x3-07.txt" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Solver" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Solver" />
+      <module name="Algorithms, Part I" />
+      <option name="PROGRAM_PARAMETERS" value="puzzle3x3-13.txt" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -144,5 +150,21 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state width="1398" height="164" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594528662389" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/PuzzleChecker.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Solver.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
