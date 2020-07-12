@@ -44,8 +44,11 @@ public class Board {
         int hammingDistance = 0;
         for (int row = 0; row < tiles.length; row++) {
             for (int column = 0; column < tiles.length; column++) {
-                boolean match = tiles[row][column] == goal[row][column];
-                if (!match) hammingDistance++;
+                int goal = this.goal[row][column];
+                int tile = this.tiles[row][column];
+                if (goal != 0 && goal != tile) {
+                    hammingDistance++;
+                }
             }
         }
         return hammingDistance;
@@ -57,10 +60,17 @@ public class Board {
         for (int row = 0; row < tiles.length; row++) {
             for (int column = 0; column < tiles.length; column++) {
                 int tile = tiles[row][column];
-
+                if (tile != 0) {
+                    int goalRow = (tile - 1) / 3;
+                    int goalColumn = (tile - 1) % 3;
+                    int rowDist = goalRow - row;
+                    int columnDist = goalColumn - column;
+                    int manhattanDist = Math.abs(rowDist) + Math.abs(columnDist);
+                    manhattan += manhattanDist;
+                }
             }
         }
-        return  0;
+        return manhattan;
     }
 
     // is this board the goal board?
@@ -85,12 +95,14 @@ public class Board {
 
     // unit testing (not graded)
     public static void main(String[] args) {
-        int[][] tiles = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
+        int[][] tiles = { { 8, 1, 3 }, { 4, 0, 2 }, { 7, 6, 5 } };
         Board board = new Board(tiles);
         System.out.println(board.toString());
-        System.out.println(String.format("dimensions: %d x %d", board.dimension(), board.dimension()));
+        System.out.println(
+                String.format("dimensions: %d x %d", board.dimension(), board.dimension()));
         System.out.println(String.format("Is goal: %b", board.isGoal()));
         System.out.println(String.format("Hamming distance: %d", board.hamming()));
+        System.out.println(String.format("Manhattan distance: %d", board.manhattan()));
     }
 
 }
