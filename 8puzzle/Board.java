@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class Board {
 
     private int[][] tiles;
+    private final int[][] goal = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
@@ -40,17 +41,30 @@ public class Board {
 
     // number of tiles out of place
     public int hamming() {
-        return 0;
+        int hammingDistance = 0;
+        for (int row = 0; row < tiles.length; row++) {
+            for (int column = 0; column < tiles.length; column++) {
+                boolean match = tiles[row][column] == goal[row][column];
+                if (!match) hammingDistance++;
+            }
+        }
+        return hammingDistance;
     }
 
     // sum of Manhattan distances between tiles and goal
     public int manhattan() {
-        return 0;
+        int manhattan = 0;
+        for (int row = 0; row < tiles.length; row++) {
+            for (int column = 0; column < tiles.length; column++) {
+                int tile = tiles[row][column];
+
+            }
+        }
+        return  0;
     }
 
     // is this board the goal board?
     public boolean isGoal() {
-        int[][] goal = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
         return Arrays.deepEquals(goal, this.tiles);
     }
 
@@ -71,11 +85,12 @@ public class Board {
 
     // unit testing (not graded)
     public static void main(String[] args) {
-        int[][] tiles = { { 1, 2, 3 }, { 5, 4, 6 }, { 7, 8, 0 } };
+        int[][] tiles = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
         Board board = new Board(tiles);
         System.out.println(board.toString());
         System.out.println(String.format("dimensions: %d x %d", board.dimension(), board.dimension()));
         System.out.println(String.format("Is goal: %b", board.isGoal()));
+        System.out.println(String.format("Hamming distance: %d", board.hamming()));
     }
 
 }
