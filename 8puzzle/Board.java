@@ -11,6 +11,8 @@ public class Board {
 
     private int[][] tiles;
     private final int[][] goal;
+    private int _hamming = -1;
+    private int _manhattan = -1;
 
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
@@ -52,6 +54,10 @@ public class Board {
 
     // number of tiles out of place
     public int hamming() {
+        if (_hamming != -1) {
+            return _hamming;
+        }
+
         int hammingDistance = 0;
         for (int row = 0; row < tiles.length; row++) {
             for (int column = 0; column < tiles.length; column++) {
@@ -62,11 +68,17 @@ public class Board {
                 }
             }
         }
-        return hammingDistance;
+
+        _hamming = hammingDistance;
+        return _hamming;
     }
 
     // sum of Manhattan distances between tiles and goal
     public int manhattan() {
+        if (_manhattan != -1) {
+            return _manhattan;
+        }
+
         int manhattan = 0;
         for (int row = 0; row < tiles.length; row++) {
             for (int column = 0; column < tiles.length; column++) {
@@ -81,7 +93,8 @@ public class Board {
                 }
             }
         }
-        return manhattan;
+        _manhattan = manhattan;
+        return _manhattan;
     }
 
     // is this board the goal board?

@@ -7,19 +7,21 @@ public class Solver {
         Board board;
         int moves;
         SearchNode previous;
+        int manhattanP;
 
         public SearchNode(Board board, int moves, SearchNode previous) {
             this.board = board;
             this.moves = moves;
             this.previous = previous;
+            this.manhattanP = board.manhattan() + moves;
         }
 
         public int compareTo(SearchNode node) {
             int p = board.manhattan() + moves;
             int nodeP = node.board.manhattan() + moves;
-            if (p < nodeP) return -1;
-            else if (p == nodeP) return 0;
-            else return 1;
+            if (manhattanP < node.manhattanP) return -1;
+            if (manhattanP > node.manhattanP) return 1;
+            return 0;
         }
     }
 
@@ -45,6 +47,8 @@ public class Solver {
                 }
             }
             node = pq.delMin();
+
+            // System.out.println(node.board.toString());
         }
 
         while (node.previous != null) {
