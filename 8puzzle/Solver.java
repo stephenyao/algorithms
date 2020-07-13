@@ -8,17 +8,17 @@ public class Solver {
         int moves;
         SearchNode previous;
         int manhattanP;
+        int hammingP;
 
         public SearchNode(Board board, int moves, SearchNode previous) {
             this.board = board;
             this.moves = moves;
             this.previous = previous;
             this.manhattanP = board.manhattan() + moves;
+            this.hammingP = board.hamming() + moves;
         }
 
         public int compareTo(SearchNode node) {
-            int p = board.manhattan() + moves;
-            int nodeP = node.board.manhattan() + moves;
             if (manhattanP < node.manhattanP) return -1;
             if (manhattanP > node.manhattanP) return 1;
             return 0;
