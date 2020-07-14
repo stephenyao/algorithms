@@ -1,5 +1,7 @@
 import edu.princeton.cs.algs4.MinPQ;
 
+import java.util.ArrayList;
+
 public class Solver {
 
     private class SearchNode implements Comparable<SearchNode> {
@@ -26,50 +28,87 @@ public class Solver {
     }
 
     private int moves = 0;
+    private SearchNode finalNode;
+    private SearchNode finalTwinNode;
 
     // find a solution to the initial board (using the A* algorithm)
     public Solver(Board initial) {
         SearchNode initialNode = new SearchNode(initial, 0, null);
         MinPQ<SearchNode> pq = new MinPQ<SearchNode>();
         pq.insert(initialNode);
-        solve(pq);
+
+        SearchNode twinNode = new SearchNode(initial.twin(), 0, null);
+        MinPQ<SearchNode> twinPq = new MinPQ<>();
+        twinPq.insert(twinNode);
+
+        solve(pq, twinPq);
     }
 
-    private void solve(MinPQ<SearchNode> pq) {
+    private void solve(MinPQ<SearchNode> pq, MinPQ<SearchNode> twinPq) {
         SearchNode node = pq.delMin();
+        SearchNode twinNode = twinPq.delMin();
 
         while (!node.board.isGoal()) {
-            for (Board neighbor : node.board.neighbors()) {
-                SearchNode neighborNode = new SearchNode(neighbor, node.moves + 1, node);
-                Board previousBoard = node.previous != null ? node.previous.board : null;
-                if (!neighborNode.board.equals(previousBoard)) {
-                    pq.insert(neighborNode);
-                }
+            node = step(pq, node);
+            twinNode = step(twinPq, node);
+        }
+
+        finalNode = node;
+        finalTwinNode = twinNode;
+    }
+
+    private SearchNode buildSolution(SearchNode node) {
+        if (node.previous == null) {
+            return node;
+        }
+        return buildSolution(node);
+    }
+
+    private SearchNode step(MinPQ<SearchNode> pq, SearchNode node) {
+        for (Board neighbor: node.board.neighbors()) {
+            SearchNode neighborNode = new SearchNode(neighbor, node.moves + 1, node);
+            Board previousBoard = node.previous != null ? node.previous.board : null;
+            if (!neighborNode.board.equals(previousBoard)) {
+                pq.insert(neighborNode);
             }
-            node = pq.delMin();
         }
-
-        while (node.previous != null) {
-            System.out.println(node.board.toString());
-            node = node.previous;
-            moves++;
-        }
-
+        return pq.delMin();
     }
 
     // is the initial board solvable? (see below)
     public boolean isSolvable() {
-        return false;
+        return finalNode.board.isGoal();
     }
 
     // min number of moves to solve initial board; -1 if unsolvable
     public int moves() {
-        return moves;
+        if (!finalNode.board.isGoal()) return -1;
+        return countMoves(0, finalNode);
+    }
+
+    private int countMoves(int acc, SearchNode node) {
+        if (node == null) return acc - 1;
+        return countMoves(acc + 1, node.previous);
     }
 
     // sequence of boards in a shortest solution; null if unsolvable
     public Iterable<Board> solution() {
-        return null;
+        if (!finalNode.board.isGoal()) {
+            return null;
+        }
+        ArrayList<Board> boards = new ArrayList<Board>();
+        SearchNode pointer = finalNode;
+        while (pointer.previous != null) {
+            boards.add(pointer.board);
+            pointer = pointer.previous;
+        }
+
+        ArrayList<Board> reversed = new ArrayList<Board>();
+        for (int i = boards.size() - 1; i >= 0; i--) {
+            reversed.add(boards.get(i));
+        }
+
+        return reversed;
     }
 
     // test client (see below)

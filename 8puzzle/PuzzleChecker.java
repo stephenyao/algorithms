@@ -48,6 +48,10 @@ public class PuzzleChecker {
             // solve the slider puzzle
             Board initial = new Board(tiles);
             Solver solver = new Solver(initial);
+
+            for (Board board: solver.solution()) {
+                System.out.println(board.toString());
+            }
             StdOut.println(filename + ": " + solver.moves());
         }
     }

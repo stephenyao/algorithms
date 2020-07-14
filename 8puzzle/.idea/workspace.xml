@@ -21,9 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PuzzleChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/PuzzleChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Solver.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,21 +63,9 @@
     <property name="ToolWindowMessages.ShowToolbar" value="false" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.Board">
+  <component name="RunManager" selected="Application.PuzzleChecker">
     <configuration name="Board" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Board" />
       <module name="Algorithms, Part I" />
@@ -86,7 +74,7 @@
     <configuration name="PuzzleChecker" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="PuzzleChecker" />
       <module name="Algorithms, Part I" />
-      <option name="PROGRAM_PARAMETERS" value="puzzle4x4-48.txt" />
+      <option name="PROGRAM_PARAMETERS" value="puzzle2x2-unsolvable1.txt" />
       <method v="2" />
     </configuration>
     <configuration name="Solver" type="Application" factoryName="Application">
@@ -98,6 +86,11 @@
     <configuration default="true" type="Application" factoryName="Application">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Board" />
+      <item itemvalue="Application.PuzzleChecker" />
+      <item itemvalue="Application.Solver" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -125,30 +118,61 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="164" key="GridCell.Tab.0.bottom" timestamp="1594528662389">
+    <state x="249" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594735636747">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="164" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594528662389" />
-    <state width="1398" height="164" key="GridCell.Tab.0.center" timestamp="1594528662389">
+    <state x="249" y="108" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.877@0.23.1440.877" timestamp="1594735636747" />
+    <state width="1398" height="331" key="GridCell.Tab.0.bottom" timestamp="1594735623839">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="164" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1594528662389" />
-    <state width="1398" height="164" key="GridCell.Tab.0.left" timestamp="1594528662389">
+    <state width="1398" height="331" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594735623839" />
+    <state width="1398" height="331" key="GridCell.Tab.0.center" timestamp="1594735623839">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="164" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1594528662389" />
-    <state width="1398" height="164" key="GridCell.Tab.0.right" timestamp="1594528662389">
+    <state width="1398" height="331" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1594735623839" />
+    <state width="1398" height="331" key="GridCell.Tab.0.left" timestamp="1594735623838">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state width="1398" height="164" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594528662389" />
+    <state width="1398" height="331" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1594735623838" />
+    <state width="1398" height="331" key="GridCell.Tab.0.right" timestamp="1594735623839">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="331" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1594735623839" />
+    <state width="1398" height="286" key="GridCell.Tab.1.bottom" timestamp="1594735443250">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1594735443250" />
+    <state width="1398" height="286" key="GridCell.Tab.1.center" timestamp="1594735443250">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1594735443250" />
+    <state width="1398" height="286" key="GridCell.Tab.1.left" timestamp="1594735443249">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1594735443249" />
+    <state width="1398" height="286" key="GridCell.Tab.1.right" timestamp="1594735443250">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1398" height="286" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1594735443250" />
+    <state x="221" y="100" key="SettingsEditor" timestamp="1594732012658">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="221" y="100" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1594732012658" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1594735546510">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.23.1440.877@0.23.1440.877" timestamp="1594735546510" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1594731724041">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1594731724041" />
   </component>
 </project>
