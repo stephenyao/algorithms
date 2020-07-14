@@ -164,7 +164,35 @@ public class Board {
 
     // a board that is obtained by exchanging any pair of tiles
     public Board twin() {
-        return null;
+        int dim = dimension();
+        int r = -1;
+        int c = -1;
+        outerloop1:
+        for (int row = 0; row < dim; row++) {
+            for (int col = 0; col < dim; col++) {
+                if (tiles[row][col] != 0) {
+                    r = row;
+                    c = col;
+                    break outerloop1;
+                }
+            }
+        }
+
+        int swapR = -1;
+        int swapC = -1;
+
+        outerloop2:
+        for (int row = dim - 1; row >= 0; row--) {
+            for (int col = dim - 1; col >= 0; col--) {
+                if (tiles[row][col] != 0) {
+                    swapR = row;
+                    swapC = col;
+                    break outerloop2;
+                }
+            }
+        }
+
+        return swap(r, c, swapR, swapC);
     }
 
     private static void test4Neighbors() {
@@ -197,6 +225,15 @@ public class Board {
         }
     }
 
+    private static void testTwin() {
+        int[][] tiles = { { 5, 1, 3 }, { 4, 6, 2 }, { 7, 0, 8 } };
+        Board board = new Board(tiles);
+        Board twin = board.twin();
+        System.out.println("Twins:");
+        System.out.println(board.toString());
+        System.out.println(twin.toString());
+    }
+
     // unit testing (not graded)
     public static void main(String[] args) {
         int[][] tiles = { { 8, 1, 3 }, { 4, 0, 2 }, { 7, 6, 5 } };
@@ -217,6 +254,7 @@ public class Board {
         test4Neighbors();
         test3Neighbors();
         test2Neighbors();
+        testTwin();
     }
 
 }

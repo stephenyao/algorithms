@@ -47,8 +47,6 @@ public class Solver {
                 }
             }
             node = pq.delMin();
-
-            // System.out.println(node.board.toString());
         }
 
         while (node.previous != null) {
@@ -56,6 +54,7 @@ public class Solver {
             node = node.previous;
             moves++;
         }
+
     }
 
     // is the initial board solvable? (see below)
