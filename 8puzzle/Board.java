@@ -11,8 +11,8 @@ public class Board {
 
     private int[][] tiles;
     private final int[][] goal;
-    private int _hamming = -1;
-    private int _manhattan = -1;
+    private int hammingCache = -1;
+    private int manhattanCache = -1;
 
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
@@ -52,8 +52,8 @@ public class Board {
 
     // number of tiles out of place
     public int hamming() {
-        if (_hamming != -1) {
-            return _hamming;
+        if (hammingCache != -1) {
+            return hammingCache;
         }
 
         int hammingDistance = 0;
@@ -67,14 +67,14 @@ public class Board {
             }
         }
 
-        _hamming = hammingDistance;
-        return _hamming;
+        hammingCache = hammingDistance;
+        return hammingCache;
     }
 
     // sum of Manhattan distances between tiles and goal
     public int manhattan() {
-        if (_manhattan != -1) {
-            return _manhattan;
+        if (manhattanCache != -1) {
+            return manhattanCache;
         }
 
         int manhattan = 0;
@@ -91,8 +91,8 @@ public class Board {
                 }
             }
         }
-        _manhattan = manhattan;
-        return _manhattan;
+        manhattanCache = manhattan;
+        return manhattanCache;
     }
 
     // is this board the goal board?
@@ -102,11 +102,10 @@ public class Board {
 
     // does this board equal y?
     public boolean equals(Object y) {
+        if (y == this) return true;
+        if (y == null) return false;
+        if (y.getClass() != this.getClass()) return false;
         Board board = (Board) y;
-        if (board == null) {
-            return false;
-        }
-
         return Arrays.deepEquals(board.tiles, this.tiles);
     }
 
