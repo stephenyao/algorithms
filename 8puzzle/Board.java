@@ -32,19 +32,17 @@ public class Board {
 
     // string representation of this board
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(String.format("%d\n", this.tiles.length));
-        for (int row = 0; row < tiles.length; row++) {
-            for (int column = 0; column < tiles.length; column++) {
-                // System.out.print(String.format("%d", tiles[row][column]));
-                builder.append(String.format("%2d", tiles[row][column]));
+        StringBuilder s = new StringBuilder();
+        int n = this.tiles.length;
+        s.append(n + "\n");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                s.append(String.format("%2d ", tiles[i][j]));
             }
-            if (row != tiles.length - 1) {
-                builder.append("\n");
-            }
+            s.append("\n");
         }
 
-        return builder.toString();
+        return s.toString();
     }
 
     // board dimension n

@@ -86,7 +86,7 @@
     <configuration name="PuzzleChecker" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="PuzzleChecker" />
       <module name="Algorithms, Part I" />
-      <option name="PROGRAM_PARAMETERS" value="puzzle4x4-unsolvable.txt" />
+      <option name="PROGRAM_PARAMETERS" value="puzzle00.txt" />
       <method v="2" />
     </configuration>
     <configuration name="Solver" type="Application" factoryName="Application">
