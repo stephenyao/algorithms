@@ -33,6 +33,9 @@ public class Solver {
 
     // find a solution to the initial board (using the A* algorithm)
     public Solver(Board initial) {
+        if (initial == null) {
+            throw new IllegalArgumentException("board cannot be null");
+        }
         this.initial = initial;
         SearchNode initialNode = new SearchNode(initial, 0, null);
         MinPQ<SearchNode> pq = new MinPQ<SearchNode>();
