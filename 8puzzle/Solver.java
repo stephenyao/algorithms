@@ -29,10 +29,11 @@ public class Solver {
 
     private int moves = 0;
     private SearchNode finalNode;
-    private SearchNode finalTwinNode;
+    private Board initial;
 
     // find a solution to the initial board (using the A* algorithm)
     public Solver(Board initial) {
+        this.initial = initial;
         SearchNode initialNode = new SearchNode(initial, 0, null);
         MinPQ<SearchNode> pq = new MinPQ<SearchNode>();
         pq.insert(initialNode);
@@ -54,7 +55,6 @@ public class Solver {
         }
 
         finalNode = node;
-        finalTwinNode = twinNode;
     }
 
     private SearchNode step(MinPQ<SearchNode> pq, SearchNode node) {
@@ -95,6 +95,7 @@ public class Solver {
             boards.add(pointer.board);
             pointer = pointer.previous;
         }
+        boards.add(initial);
 
         ArrayList<Board> reversed = new ArrayList<Board>();
         for (int i = boards.size() - 1; i >= 0; i--) {
