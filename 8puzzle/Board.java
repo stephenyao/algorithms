@@ -10,7 +10,6 @@ import java.util.Arrays;
 public class Board {
 
     private int[][] tiles;
-    private final int[][] goal;
     private int hammingCache = -1;
     private int manhattanCache = -1;
 
@@ -18,16 +17,6 @@ public class Board {
     // where tiles[row][col] = tile at (row, col)
     public Board(int[][] tiles) {
         this.tiles = deepCopy(tiles);
-        int[][] goal = new int[tiles.length][tiles.length];
-        int count = 1;
-        for (int row = 0; row < tiles.length; row++) {
-            for (int col = 0; col < tiles.length; col++) {
-                goal[row][col] = count;
-                count++;
-            }
-        }
-        goal[tiles.length - 1][tiles.length - 1] = 0;
-        this.goal = goal;
     }
 
     // string representation of this board
@@ -59,7 +48,7 @@ public class Board {
         int hammingDistance = 0;
         for (int row = 0; row < tiles.length; row++) {
             for (int column = 0; column < tiles.length; column++) {
-                int goal = this.goal[row][column];
+                int goal = goalTile(row, column);
                 int tile = this.tiles[row][column];
                 if (goal != 0 && goal != tile) {
                     hammingDistance++;
@@ -97,7 +86,23 @@ public class Board {
 
     // is this board the goal board?
     public boolean isGoal() {
-        return Arrays.deepEquals(goal, this.tiles);
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles.length; j++) {
+                if (tiles[i][j] != goalTile(i, j)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private int goalTile(int row, int col) {
+        if (row == tiles.length - 1 && col == tiles.length - 1) {
+            return 0;
+        }
+
+        return row * tiles.length + (col + 1);
     }
 
     // does this board equal y?
