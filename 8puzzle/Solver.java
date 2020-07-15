@@ -48,24 +48,17 @@ public class Solver {
         SearchNode node = pq.delMin();
         SearchNode twinNode = twinPq.delMin();
 
-        while (!node.board.isGoal()) {
+        while (!node.board.isGoal() && !twinNode.board.isGoal()) {
             node = step(pq, node);
-            twinNode = step(twinPq, node);
+            twinNode = step(twinPq, twinNode);
         }
 
         finalNode = node;
         finalTwinNode = twinNode;
     }
 
-    private SearchNode buildSolution(SearchNode node) {
-        if (node.previous == null) {
-            return node;
-        }
-        return buildSolution(node);
-    }
-
     private SearchNode step(MinPQ<SearchNode> pq, SearchNode node) {
-        for (Board neighbor: node.board.neighbors()) {
+        for (Board neighbor : node.board.neighbors()) {
             SearchNode neighborNode = new SearchNode(neighbor, node.moves + 1, node);
             Board previousBoard = node.previous != null ? node.previous.board : null;
             if (!neighborNode.board.equals(previousBoard)) {
